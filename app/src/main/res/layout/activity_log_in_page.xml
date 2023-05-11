@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="35dp"
     tools:context=".LogInPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Log In"
+        android:textColor="#681827"
+        android:textSize="40dp"
+        android:textStyle="italic"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#1E0303"
+        android:text="UserName -"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/userNameLI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="full name" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#1E0303"
+        android:text="Password -"
+        android:textSize="25dp" />
+
+    <EditText
+        android:id="@+id/userPasswordLI"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="password"/>
+
+    <Button
+        android:id="@+id/logInGTP"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:text="Log In"
+        android:textSize="30dp"
+        android:backgroundTint="#613333"
+        android:onClick="goToPrimePage"
+        />
+
+
+</LinearLayout>

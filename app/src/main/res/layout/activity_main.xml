@@ -11,6 +11,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,27 +20,46 @@
         android:text="Languages"
         android:textColor="#121D59"
         app:backgroundTint="#DDC6C6" />
-
-    <TextView
-        android:id="@+id/noteck"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="15dp"
-        android:layout_marginHorizontal="50dp"
-        android:rotationY="11"
-        android:text="Noteck"
-        android:textColor="#3B699A"
-        android:textSize="90dp"
-        android:textStyle="italic"
-        android:typeface="serif" />
+        android:orientation="horizontal">
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:layout_height="144dp"
+            android:background="@drawable/man"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="144dp"
+            android:background="@drawable/noteck"/>
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/noteck"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="2"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="50dp"-->
+<!--            android:layout_marginVertical="15dp"-->
+<!--            android:rotationY="11"-->
+<!--            android:text="Noteck"-->
+<!--            android:textColor="#3B699A"-->
+<!--            android:textSize="50dp"-->
+<!--            android:textStyle="italic"-->
+<!--            android:typeface="serif" />-->
+
+    </LinearLayout>
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
             <Button
+                android:layout_marginTop="100dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="18dp"
@@ -54,7 +74,14 @@
                 android:textSize="40dp"
                 app:backgroundTint="#DDC6C6" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right">
+
             <Button
+                android:layout_gravity="bottom"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
                 android:paddingEnd="12dp"
@@ -62,13 +89,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round"
-                android:text="Log in"
+                android:text="Already Have An Account"
                 android:id="@+id/logInFirstBtn"
-                android:textSize="40dp"
+                android:textSize="20dp"
                 android:textColor="#121D59"
                 app:backgroundTint="#DDC6C6" />
+        </LinearLayout>
 
-        </LinearLayout>-->
+        </LinearLayout>
 
     <!--    <ScrollView-->
     <!--        android:layout_width="match_parent"-->

@@ -1,9 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="35dp"
     tools:context=".SignUpPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/title">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Welcome To
+
+            SignUp Page"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="italic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:text="Please fill in:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Status -"/>
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+                <RadioButton
+                    android:id="@+id/radioTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Teacher"
+                    android:onClick="checkButton"/>
+                <RadioButton
+                    android:id="@+id/radiStudent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="checkButton"
+                    android:text="Student" />
+            </RadioGroup>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Id -"/>
+            <EditText
+                android:id="@+id/userID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="full id"
+                android:layout_marginBottom="10dp"
+                android:digits="0123456789"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Email Address -"
+                android:textSize="25dp" />
+
+            <EditText
+                android:id="@+id/userEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Gmail/hotmail"
+                android:layout_marginBottom="10dp"
+                android:inputType="textEmailAddress"/>
+
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="UserName -"/>
+            <EditText
+                android:id="@+id/s_userNameSU"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Password -"/>
+            <EditText
+                android:hint="password"
+                android:id="@+id/s_userPasswordSU"
+                android:layout_width="match_parent"
+                android:inputType="textPassword"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="Verify The Password -"/>
+            <EditText
+                android:id="@+id/vertifyPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="password again"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click To Confirm"
+                android:textSize="15dp"
+                android:backgroundTint="#DEE3F1"
+                android:textColor="#2E557C"
+                android:background="@drawable/round"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

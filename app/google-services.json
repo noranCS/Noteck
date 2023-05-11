@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "608127126498",
+    "project_id": "noteck-e12dc",
+    "storage_bucket": "noteck-e12dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608127126498:android:20b8332c51df48428b87bb",
+        "android_client_info": {
+          "package_name": "com.example.noteckv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608127126498-0f0bgtgq8tjprkn2gnkp027r0aistneh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsPjNlPRJ7kslwhsyVbEsn7QgLEkdY2oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608127126498-0f0bgtgq8tjprkn2gnkp027r0aistneh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
