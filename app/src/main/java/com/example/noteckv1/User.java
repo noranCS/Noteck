@@ -11,7 +11,7 @@ public class User {
         this.status = status;
         Id = id;
     }
-
+    // example
     public User() {
         //enable firebase to use getter and setter
     }
