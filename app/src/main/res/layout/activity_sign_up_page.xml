@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="35dp"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/signup_pageId"
     tools:context=".SignUpPage">
 
     <ScrollView
@@ -55,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Teacher"
+                    android:checked="true"
                     android:onClick="checkButton"/>
                 <RadioButton
                     android:id="@+id/radiStudent"
@@ -129,9 +132,10 @@
                 android:textSize="25dp"
                 android:text="Verify The Password -"/>
             <EditText
-                android:id="@+id/vertifyPass"
+                android:id="@+id/verifyPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="password again"
                 android:layout_marginBottom="10dp"/>
 

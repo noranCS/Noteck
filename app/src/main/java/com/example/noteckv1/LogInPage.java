@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +33,13 @@ public class LogInPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_log_in_page);
+
+        LinearLayout linearLayout = findViewById(R.id.login_pageId);
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         sharedPreferences = getSharedPreferences("data.txt",MODE_PRIVATE);//upload to the "phone"/no need to sign in again    data.txt is a file to wrtite on it we need editor
         editor = sharedPreferences.edit();
@@ -40,7 +49,6 @@ public class LogInPage extends Activity {
             startActivity(intent);
         }
 
-        setContentView(R.layout.activity_log_in_page);
 
         logInGoToPrime = findViewById(R.id.logInGTP);
         userNameET = findViewById(R.id.userNameLI);
@@ -78,9 +86,9 @@ public class LogInPage extends Activity {
             }
         });
 
-        Intent intent = new Intent(LogInPage.this,SignUpPage.class);//go to SignUpPAge then come back to LogInPage
+      //  Intent intent = new Intent(LogInPage.this,SignUpPage.class);//go to SignUpPAge then come back to LogInPage
         //go to other class then come back starting from onActivityResult
-        startActivityForResult(intent, SignUpPage.SignUp_REQUEST_CODE);//get code from signUpPage
+      //  startActivityForResult(intent, SignUpPage.SignUp_REQUEST_CODE);//get code from signUpPage
     }
 
     @Override

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="35dp"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/login_pageId"
     tools:context=".LogInPage">
 
     <TextView
@@ -60,6 +62,7 @@
         android:background="@drawable/round"
         android:text="Log In"
         android:textSize="30dp"
+        android:textColor="@color/white"
         android:backgroundTint="#613333"
         android:onClick="goToPrimePage"
         />
