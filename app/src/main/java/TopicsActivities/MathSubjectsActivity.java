@@ -4,13 +4,19 @@ import static TopicsActivities.PrimePage.userName;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noteckv1.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,25 +40,25 @@ public class MathSubjectsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
+
         uploadsList = new ArrayList<Upload>();
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for( DataSnapshot postSnapshot : snapshot.getChildren() ){//for each loop
-//                    Upload upload = postSnapshot.getValue(Upload.class);
-//                    uploadsList.add(upload);
-//                }
-//                imageAdapter = new ImageAdapter(MathSubjectsActivity.this,uploadsList);
-//                recyclerView.setAdapter(imageAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(MathSubjectsActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
-//            }
-//        });
+        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for( DataSnapshot postSnapshot : snapshot.getChildren() ){//for each loop
+                    Upload upload = postSnapshot.getValue(Upload.class);
+                    uploadsList.add(upload);
+                }
+                imageAdapter = new ImageAdapter(MathSubjectsActivity.this,uploadsList);
+                recyclerView.setAdapter(imageAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(MathSubjectsActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
 
 
     }

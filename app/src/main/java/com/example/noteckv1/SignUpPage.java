@@ -97,19 +97,19 @@ public class SignUpPage extends Activity {
     //check if everything is applied
 
     private void writeToDatabase(User user){
-       // if(checkName() && checkEmail() && checkPassword() && validTwoPasswords() && checkId()) {//upload to DATABASE
+        if(checkName() && checkEmail() && checkPassword() && validTwoPasswords() && checkId()) {//upload to DATABASE
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.child(user.getUserName()).exists()){//check to compare
+                    if (snapshot.child(user.getUserName()).exists()) {//check to compare
                         Toast.makeText(SignUpPage.this, "user name exist", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         databaseReference.child(user.getUserName()).setValue(user);
                         Intent i = new Intent();
-                        i.putExtra("userName",user.getUserName());
-                        i.putExtra("userPassword",user.getUserPassword());
-                        i.putExtra("userId",user.getId());//send back to the first activity
-                        setResult(RESULT_OK,i);
+                        i.putExtra("userName", user.getUserName());
+                        i.putExtra("userPassword", user.getUserPassword());
+                        i.putExtra("userId", user.getId());//send back to the first activity
+                        setResult(RESULT_OK, i);
                         finish();//get back to login
                     }
                 }
@@ -119,6 +119,7 @@ public class SignUpPage extends Activity {
 
                 }
             });
+        }
 
     }
 
