@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="TopicsActivities.MathSubjectsActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/top_linear_mathAc"
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_view"
+        android:backgroundTint="#C7D355"
+        android:layout_height="90dp"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/setting_icon"
+            android:layout_width="50dp"
+            android:layout_height="34dp"
+            android:background="@drawable/man_icon"
+            android:backgroundTint="#685B5B"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/textNameMathAc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:shadowDx="8"
+            android:shadowDy="6"
+            android:text="name"
+            android:textColor="#270202"
+            android:textSize="23dp"
+            android:typeface="serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:shadowDx="8"
+            android:shadowDy="6"
+            android:text="Math Category"
+            android:textColor="#FBFBFB"
+            android:textSize="23dp"
+            android:typeface="serif" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/buttons_container"
+        android:layout_below="@+id/top_linear_mathAc"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/math_algebra"
+                android:layout_marginEnd="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Algebra"
+                android:textSize="15dp"
+                android:typeface="monospace"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#A5AC61"
+                android:background="@drawable/round"
+                app:backgroundTint="@null"/>
+            <!--      app:backgroundTint="@null"  __> usage: to display button background while using drawable resource design -->
+
+            <Button
+                android:id="@+id/math_geometry"
+                android:layout_marginEnd="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Geometry"
+                android:textSize="15dp"
+                android:typeface="monospace"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#A5AC61"
+                android:background="@drawable/round"
+                app:backgroundTint="@null"/>
+            <Button
+                android:id="@+id/math_trigonometry"
+                android:layout_marginEnd="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trigonometry"
+                android:textSize="15dp"
+                android:typeface="monospace"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#A5AC61"
+                android:background="@drawable/round"
+                app:backgroundTint="@null"/>
+        <Button
+            android:id="@+id/math_statistics"
+            android:layout_marginEnd="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statistics"
+            android:textSize="15dp"
+            android:typeface="monospace"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#A5AC61"
+            android:background="@drawable/round"
+            app:backgroundTint="@null"/>
+
+    </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottom_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/upload_file_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/plus_sign"
+            android:backgroundTint="#8BC34A"/>
+<!--      android:src="@drawable/plus_sign"   NOT background  -->
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/images_container_mathSub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/buttons_container"
+        android:layout_marginTop="2dp"
+        android:layout_above="@+id/bottom_linear">
+
+        <!--    recycleView's role the same as list-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
+</RelativeLayout>

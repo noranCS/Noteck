@@ -1,8 +1,10 @@
-package com.example.noteckv1;
+package TopicsActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.noteckv1.R;
 
 public class LanguagesPage extends AppCompatActivity {
 

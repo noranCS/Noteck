@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="TopicsActivities.CSActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_view"
+        android:backgroundTint="#92B4C3"
+        android:layout_height="90dp" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/setting_icon"
+            android:paddingTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="34dp"
+            android:background="@drawable/man_icon"
+            android:backgroundTint="#685B5B"/>
+        <TextView
+            android:layout_marginStart="5dp"
+            android:typeface="serif"
+            android:textColor="#270202"
+            android:id="@+id/textNameCSAc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textSize="23dp"
+            android:shadowDx="8"
+            android:shadowDy="6"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="5dp"
+            android:typeface="serif"
+            android:textColor="#FBFBFB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Computer Science Category"
+            android:textSize="23dp"
+            android:shadowDx="8"
+            android:shadowDy="6"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

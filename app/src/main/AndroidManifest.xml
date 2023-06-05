@@ -11,14 +11,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteckV1"
         tools:targetApi="31">
+        <!-- add activities  the same package TopicsActivities -->
         <activity
-            android:name=".LanguagesPage"
+            android:name="TopicsActivities.PhysicsActivity"
             android:exported="false" />
+        <activity
+            android:name="TopicsActivities.BiologyActivity"
+            android:exported="false" />
+        <activity
+            android:name="TopicsActivities.ChemistryActivity"
+            android:exported="false" />
+        <activity
+            android:name="TopicsActivities.CSActivity"
+            android:exported="false" /> <!-- add activities  the same packageTopicsActivities -->
+        <activity
+            android:name="TopicsActivities.MathSubjectsActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name="TopicsActivities.ImagesActivity"
+            android:exported="false" />
+        <activity
+            android:name="TopicsActivities.PrimePage"
+            android:exported="false" />
+        <activity
+            android:name="TopicsActivities.LanguagesPage"
+            android:exported="false" />
+        <!-- add activities  the same package ButtonsActivities -->
+        <activity
+            android:name="ButtonsActivities.AddPicActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name="ButtonsActivities.CalendarActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name="ButtonsActivities.ChatWithActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name="ButtonsActivities.ProfileActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" /> <!-- com.example.noteckV1  package -->
         <activity
             android:name=".LogInPage"
-            android:exported="false" />
-        <activity
-            android:name=".PrimePage"
             android:exported="false" />
         <activity
             android:name=".SignUpPage"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ButtonsActivities.ChatWithActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Chat With"
+        android:textSize="30dp"/>
+
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/meow_bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mbn_circleColor="#ECE990"
+        app:mbn_backgroundBottomColor="#B5B14C"
+        app:mbn_countBackgroundColor="#E4A97B"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_defaultIconColor="#C8D2D6"
+        app:mbn_rippleColor="#8AB35B"
+        app:labelVisibilityMode="labeled"
+        app:mbn_selectedIconColor="#49559A"
+        app:mbn_shadowColor="#1f212121"
+        />
+
+</RelativeLayout>

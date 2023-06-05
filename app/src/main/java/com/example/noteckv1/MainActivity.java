@@ -1,21 +1,15 @@
 package com.example.noteckv1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import TopicsActivities.PrimePage;
 
 public class MainActivity extends Activity {
 
@@ -32,7 +26,7 @@ public class MainActivity extends Activity {
         sharedPreferences = getSharedPreferences("data.txt",MODE_PRIVATE);//like a stack key:value
         String userName = sharedPreferences.getString("userName",null);
         if( userName != null ){
-            Intent intent = new Intent(this,PrimePage.class);
+            Intent intent = new Intent(this, PrimePage.class);
             intent.putExtra("userName",userName);
             startActivity(intent);
         }
