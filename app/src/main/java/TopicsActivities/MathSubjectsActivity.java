@@ -34,7 +34,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+//
         uploadsList = new ArrayList<Upload>();
 //        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
 //        databaseReference.addValueEventListener(new ValueEventListener() {
