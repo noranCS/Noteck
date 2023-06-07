@@ -43,7 +43,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Upload currentUpload = uploads.get(position);
-        holder.textView.setText(currentUpload.getImageName());
+        holder.textView.setText(currentUpload.getText());
 
         setImageViewBimap(currentUpload.getImageUrl(),holder.imageView);
 

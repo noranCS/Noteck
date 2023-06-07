@@ -1,7 +1,7 @@
 package TopicsActivities;
 
 public class Upload {
-    private String imageName;
+    private String text;
     private String imageUrl;
 
     public Upload(){
@@ -12,20 +12,20 @@ public class Upload {
         //trim method -> remove all additional spaces " noran essa " --> "noranessa
         if( imageName.trim().equals("") )//check if the name exist
             imageName = "No Name";
-        this.imageName = imageName;
+        this.text = imageName;
         this.imageUrl = imageUrl;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getText() {
+        return text;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setText(String imageName) {
+        this.text = imageName;
     }
 
     public void setImageUrl(String imageUrl) {
