@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +52,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
 
     private Uri imageUri;
     private StorageTask uploadTask;
+    private ProgressBar uploadProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
 //        recyclerView = findViewById(R.id.recycleView);
 //        recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        uploadProgressBar = findViewById(R.id.upload_progress_bar);
         uploadBtn = findViewById(R.id.upload_file_pic);
 
         uploadsList = new ArrayList<Upload>();
@@ -103,8 +107,8 @@ public class MathSubjectsActivity extends AppCompatActivity {
     }
     private void uploadImage() {
         if( imageUri != null ){
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                    +"."+ getFileExtension(imageUri));
+            String imageName = System.currentTimeMillis()+"."+ getFileExtension(imageUri);
+            StorageReference fileReference = storageReference.child(imageName);
             uploadTask = fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -113,17 +117,20 @@ public class MathSubjectsActivity extends AppCompatActivity {
                             handler.postAtTime(new Runnable() {
                                 @Override
                                 public void run() {
-                                   // progressBar.setProgress(0);
+                                   uploadProgressBar.setProgress(0);
+                                   uploadProgressBar.setVisibility(View.VISIBLE);
                                 }
                             },2000);
                             Toast.makeText(MathSubjectsActivity.this,"Upload Successful",Toast.LENGTH_LONG).show();
                             Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
+                            Log.d("AAAAAA",taskSnapshot.getStorage().getName());
                             task.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    Upload upload = new Upload(textTV.getText().toString().trim(), uri.toString());
                                     String uploadId = databaseReference.push().getKey();
+                                    Upload upload = new Upload(textTV.getText().toString().trim(), uri.toString(),imageName,uploadId);
                                     databaseReference.child(uploadId).setValue(upload);
+                                    uploadProgressBar.setVisibility(View.INVISIBLE);
                                 }
                             });
 
@@ -139,13 +146,14 @@ public class MathSubjectsActivity extends AppCompatActivity {
                         @Override
                         public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                             double progress = 100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount();
-                          //  progressBar.setProgress((int)progress);
+                            uploadProgressBar.setProgress((int)progress);
                         }
                     });
 
         }else{
             Toast.makeText(this,"No File selected",Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void openFileChooser() {

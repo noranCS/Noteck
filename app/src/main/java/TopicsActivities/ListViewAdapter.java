@@ -19,6 +19,8 @@ import androidx.annotation.Nullable;
 import com.example.noteckv1.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -29,6 +31,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     private int resource;
 
     private StorageReference storageReference;
+    private DatabaseReference databaseReference;
 
     public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<Upload> objects) {
         super(context, resource, objects);
@@ -49,11 +52,15 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
         Upload upload = getItem(position);
         setImageViewBimap(upload.getImageUrl() , imageView);
         textView.setText(upload.getText());
-        btnDel.setTag(upload.getImageUrl());
+        btnDel.setTag(upload);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
+        storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteFromDataBase(v.getTag().toString());
+                deleteFromDataBase((Upload) v.getTag());
+               // Log.d("AAAAAAA",upload.toString());
             }
         });
 
@@ -61,13 +68,20 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
 
     }
 
-    private void deleteFromDataBase(String url) {
-        Log.d("ListViewAdapter",url);
+    private void deleteFromDataBase(Upload upload) {
+        storageReference.child(upload.getImageName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                databaseReference.child(upload.getId()).removeValue();
+                remove(upload);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     private void setImageViewBimap(String url,ImageView imgV){
-        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-        final long ONE_MEGABYTE = 1024 * 1024;
+        StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+        final long ONE_MEGABYTE = 1024 * 1024 * 5;
         storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
