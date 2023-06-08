@@ -66,6 +66,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_subjects);
+
         listView = findViewById(R.id.mathListView);
         textTV = findViewById(R.id.textNameMathAc);
         userName = getIntent().getStringExtra("userName");
@@ -86,7 +87,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
 //add button
 
         uploadsList = new ArrayList<Upload>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Uploads" );
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
         ListViewAdapter listViewAdapter = new ListViewAdapter(MathSubjectsActivity.this,R.layout.row_item,uploadsList);
         listView.setAdapter(listViewAdapter);
@@ -94,7 +95,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 uploadsList.clear();
-                for( DataSnapshot postSnapshot : snapshot.getChildren() ){//for each loop
+                for( DataSnapshot postSnapshot : snapshot.child(subject).getChildren() ){//for each loop
                     Upload upload = postSnapshot.getValue(Upload.class);
                     uploadsList.add(upload);
                 }

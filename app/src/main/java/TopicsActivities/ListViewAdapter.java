@@ -3,7 +3,6 @@ package TopicsActivities;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +49,10 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
         Button btnDel = convertView.findViewById(R.id.row_item_del);
 
         Upload upload = getItem(position);
-        Log.d("test",upload.getImageUrl());
         setImageViewBimap(upload.getImageUrl() , imageView);
         textView.setText(upload.getText());
-        btnDel.setTag(upload);
+        btnDel.setTag(upload);//tag : saves list info when clicked to use it for removing images
+        //view -- contain tag as editor
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
@@ -70,7 +69,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     }
 
     private void deleteFromDataBase(Upload upload) {
-        storageReference.child(upload.getImageName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+        storageReference.child(upload.getSubject()).child(upload.getImageName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 databaseReference.child(upload.getSubject()).child(upload.getId()).removeValue();
@@ -81,7 +80,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     }
 
     private void setImageViewBimap(String url,ImageView imgV){
-        Log.d("test",url);
+//        Log.d("test",url);
         StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
         final long ONE_MEGABYTE = 1024 * 1024 * 5;
         storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
