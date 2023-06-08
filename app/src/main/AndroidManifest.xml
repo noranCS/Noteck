@@ -29,9 +29,6 @@
             android:exported="false"
             tools:ignore="MissingClass" />
         <activity
-            android:name="TopicsActivities.ImagesActivity"
-            android:exported="false" />
-        <activity
             android:name="TopicsActivities.PrimePage"
             android:exported="false" />
         <activity

@@ -50,6 +50,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
         Button btnDel = convertView.findViewById(R.id.row_item_del);
 
         Upload upload = getItem(position);
+        Log.d("test",upload.getImageUrl());
         setImageViewBimap(upload.getImageUrl() , imageView);
         textView.setText(upload.getText());
         btnDel.setTag(upload);
@@ -72,7 +73,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
         storageReference.child(upload.getImageName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                databaseReference.child(upload.getId()).removeValue();
+                databaseReference.child(upload.getSubject()).child(upload.getId()).removeValue();
                 remove(upload);
                 notifyDataSetChanged();
             }
@@ -80,6 +81,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     }
 
     private void setImageViewBimap(String url,ImageView imgV){
+        Log.d("test",url);
         StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
         final long ONE_MEGABYTE = 1024 * 1024 * 5;
         storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {

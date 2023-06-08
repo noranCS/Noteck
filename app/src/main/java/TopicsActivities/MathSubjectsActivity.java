@@ -10,6 +10,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,8 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.noteckv1.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -53,20 +54,36 @@ public class MathSubjectsActivity extends AppCompatActivity {
     private Uri imageUri;
     private StorageTask uploadTask;
     private ProgressBar uploadProgressBar;
+    private String subject;
+
+    //linear list -- attributes
+    private LinearLayout imageLinearContainer;
+    private TextView imageInfoTV;
+    private ImageView imageV;
+    private Button uploadBtnToList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_subjects);
         listView = findViewById(R.id.mathListView);
-        textTV = findViewById(R.id.textMathAc);
+        textTV = findViewById(R.id.textNameMathAc);
         userName = getIntent().getStringExtra("userName");
         textTV.setText(userName);
+
+        imageLinearContainer = findViewById(R.id.addContainer);
+        imageInfoTV = findViewById(R.id.imageInfoTV);
+        imageV = findViewById(R.id.imageV);
+        uploadBtnToList = findViewById(R.id.uploadBtnToList);
+
+        subject ="Algebra";
 
 //        recyclerView = findViewById(R.id.recycleView);
 //        recyclerView.setHasFixedSize(true);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         uploadProgressBar = findViewById(R.id.upload_progress_bar);
         uploadBtn = findViewById(R.id.upload_file_pic);
+//add button
 
         uploadsList = new ArrayList<Upload>();
         databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
@@ -95,7 +112,14 @@ public class MathSubjectsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openFileChooser();
+                imageLinearContainer.setVisibility(View.VISIBLE);
+            }
+        });
 
+        uploadBtnToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();// sent to fireStorage
             }
         });
     }
@@ -108,7 +132,7 @@ public class MathSubjectsActivity extends AppCompatActivity {
     private void uploadImage() {
         if( imageUri != null ){
             String imageName = System.currentTimeMillis()+"."+ getFileExtension(imageUri);
-            StorageReference fileReference = storageReference.child(imageName);
+            StorageReference fileReference = storageReference.child(subject).child(imageName); // image name is the child of uploads
             uploadTask = fileReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -122,15 +146,17 @@ public class MathSubjectsActivity extends AppCompatActivity {
                                 }
                             },2000);
                             Toast.makeText(MathSubjectsActivity.this,"Upload Successful",Toast.LENGTH_LONG).show();
-                            Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
+                            Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();//get url(connection with firebase) to use for downloads //
                             Log.d("AAAAAA",taskSnapshot.getStorage().getName());
                             task.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String uploadId = databaseReference.push().getKey();
-                                    Upload upload = new Upload(textTV.getText().toString().trim(), uri.toString(),imageName,uploadId);
-                                    databaseReference.child(uploadId).setValue(upload);
+                                    Upload upload = new Upload(imageInfoTV.getText().toString().trim(), uri.toString(),imageName,uploadId,subject);
+                                    //id image for deleting
+                                    databaseReference.child(subject).child(uploadId).setValue(upload);
                                     uploadProgressBar.setVisibility(View.INVISIBLE);
+                                    imageLinearContainer.setVisibility(View.GONE);
                                 }
                             });
 
@@ -154,22 +180,25 @@ public class MathSubjectsActivity extends AppCompatActivity {
             Toast.makeText(this,"No File selected",Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     private void openFileChooser() {
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("image/*");//or downloads... from system
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent,PICK_IMAGE_REQUEST);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {//result -- image    after the method openFileChooser
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() !=null ){
             imageUri = data.getData();
-            uploadImage();
+            imageV.setImageURI(imageUri);//display image in linear image container
+
+//            uploadImage();
            // image.setImageURI( imageUri);
         }
     }
