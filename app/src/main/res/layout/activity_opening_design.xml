@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".openingDesignActivity"
+    android:background="@drawable/openning_background">
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blurLayoutOpenning"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mainImg"
+                android:layout_width="match_parent"
+                android:layout_height="650dp"
+                android:src="@drawable/openning_background"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Noteck App"
+                android:layout_below="@+id/mainImg"
+                android:textSize="40sp"
+                android:textColor="#983B3B"
+                android:typeface="serif"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:shadowDx="9"
+                android:shadowDy="6"
+                android:shadowColor="@color/black"/>
+
+        </RelativeLayout>
+
+    </eightbitlab.com.blurview.BlurView>
+
+</RelativeLayout>

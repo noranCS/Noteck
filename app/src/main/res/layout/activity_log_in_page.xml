@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Log In"
-        android:textColor="#681827"
+        android:textColor="#5767BF"
         android:textSize="40dp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         android:typeface="serif" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:text="Log In"
         android:textSize="30dp"
         android:textColor="@color/white"
-        android:backgroundTint="#613333"
+        android:backgroundTint="#5D6DC8"
         android:onClick="goToPrimePage"
         />
 

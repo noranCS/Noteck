@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +31,7 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
 
+
     public ListViewAdapter(@NonNull Context context, int resource, @NonNull List<Upload> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -46,21 +46,20 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
             convertView = inflater.inflate(resource,parent,false);
         ImageView imageView = convertView.findViewById(R.id.row_item_img);
         TextView textView = convertView.findViewById(R.id.row_item_tv);
-        Button btnDel = convertView.findViewById(R.id.row_item_del);
+        ImageView imageViewDel = convertView.findViewById(R.id.row_item_del);
 
         Upload upload = getItem(position);
         setImageViewBimap(upload.getImageUrl() , imageView);
         textView.setText(upload.getText());
-        btnDel.setTag(upload);//tag : saves list info when clicked to use it for removing images
+        imageViewDel.setTag(upload);//tag : saves list info when clicked to use it for removing images
         //view -- contain tag as editor
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Uploads");
         storageReference = FirebaseStorage.getInstance().getReference("Uploads");
-        btnDel.setOnClickListener(new View.OnClickListener() {
+        imageViewDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteFromDataBase((Upload) v.getTag());
-               // Log.d("AAAAAAA",upload.toString());
             }
         });
 
@@ -69,6 +68,8 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
     }
 
     private void deleteFromDataBase(Upload upload) {
+        //              I M P O R T A N T     F O R     O R G A N I Z I N G     F I R E B A S E
+        //                   chile( subject )  organize firebase as selected categories
         storageReference.child(upload.getSubject()).child(upload.getImageName()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -98,4 +99,6 @@ public class ListViewAdapter extends ArrayAdapter<Upload> {
 
         // Bitmap  bitmap = BitmapFactory.decodeByteArray(blob, 0, blob.length);
     }
+
+
 }

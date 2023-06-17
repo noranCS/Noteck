@@ -1,8 +1,5 @@
 package com.example.noteckv1;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +29,6 @@ public class LogInPage extends Activity {
     private SharedPreferences.Editor editor;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class LogInPage extends Activity {
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
 
-        sharedPreferences = getSharedPreferences("data.txt",MODE_PRIVATE);//upload to the "phone"/no need to sign in again    data.txt is a file to wrtite on it we need editor
+        sharedPreferences = getSharedPreferences("data.txt",MODE_PRIVATE);//upload to the "phone"/no need to sign in again    data.txt is a file to write on it we need editor
         editor = sharedPreferences.edit();
         String name = sharedPreferences.getString("userName",null);
         if(name != null){
@@ -65,7 +64,8 @@ public class LogInPage extends Activity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if( snapshot.child(userNameST).exists()){
-                            User user = snapshot.child(userNameST).getValue(User.class);//check if loging in is OK
+                            User user = snapshot.child(userNameST).getValue(User.class);//check if logging in is OK
+
                             if( user.getUserPassword().equals(userPasswordST)){
                                 Intent intent = new Intent(LogInPage.this,PrimePage.class);
                                 //storage info by :
@@ -96,6 +96,8 @@ public class LogInPage extends Activity {
         if( requestCode == SignUpPage.SignUp_REQUEST_CODE && resultCode == RESULT_OK ){//result_ok = -1
             //get info and use it from data.getExtra
         }
+
+
         logInGoToPrime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

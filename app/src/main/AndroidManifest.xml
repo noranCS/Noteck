@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteckV1"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
         <!-- add activities  the same package TopicsActivities -->
         <activity
             android:name="TopicsActivities.PhysicsActivity"
@@ -33,8 +36,7 @@
             android:exported="false" />
         <activity
             android:name="TopicsActivities.LanguagesPage"
-            android:exported="false" />
-        <!-- add activities  the same package ButtonsActivities -->
+            android:exported="false" /> <!-- add activities  the same package ButtonsActivities -->
         <activity
             android:name="ButtonsActivities.AddPicActivity"
             android:exported="false"
@@ -58,7 +60,7 @@
             android:name=".SignUpPage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".openingDesignActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -80,14 +80,6 @@ public class SignUpPage extends Activity {
                 }
 
 
-//                int statusId = radioGroup.getCheckedRadioButtonId();
-//                if(statusId == -1) {//no radioBTN is checked
-//                    Message.message(getApplicationContext(),"Please Select A Status");
-//                }else if(statusId != userStatus.getId() ){
-//                    userStatus.setId(statusId);
-//                }
-
-
 
                 }
         });
@@ -97,7 +89,7 @@ public class SignUpPage extends Activity {
     //check if everything is applied
 
     private void writeToDatabase(User user){
-        if(checkName() && checkEmail() && checkPassword() && validTwoPasswords() && checkId()) {//upload to DATABASE
+//        if(checkName() && checkEmail() && checkPassword() && validTwoPasswords() && checkId()) {//upload to DATABASE
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -119,7 +111,6 @@ public class SignUpPage extends Activity {
 
                 }
             });
-        }
 
     }
 
