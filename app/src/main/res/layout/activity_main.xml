@@ -18,7 +18,7 @@
         android:layout_gravity="right"
         android:background="@drawable/round"
         android:text="Languages"
-        android:textColor="@color/white"
+        android:textColor="#121D59"
         app:backgroundTint="#6d5778" />
 
     <FrameLayout

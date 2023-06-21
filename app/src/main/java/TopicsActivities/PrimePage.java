@@ -19,7 +19,6 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 public class PrimePage extends AppCompatActivity {
-//XML : line 23 , supposed to be rowCount=3
     //row / column places 1-0 1-1 etc.
 
     //Buttons Activities  Ids

@@ -188,25 +188,5 @@ public class SignUpPage extends Activity {
     }
 
 
-//    public void goToLogIn(View view) {
-//        if(userPassword.getText().toString().isEmpty() || userPass2.getText().toString().isEmpty()){
-//            //message
-//            Toast.makeText(this, "Please Enter The Missing Form\"", Toast.LENGTH_SHORT).show();
-//        }else if(userPassword.getText().toString().equals(userPass2.getText().toString())){
-//              //message
-//            Toast.makeText(this, "Your Vertify Password Is Wrong!", Toast.LENGTH_SHORT).show();
-//        }
-//        else {
-//            intent = new Intent(SignUpPage.this, LogInPage.class);
-//            intent.putExtra("userId", userId.getText().toString());
-//            intent.putExtra("userId", userId.getText().toString());
-//            intent.putExtra("userEmail", userEmail.getText().toString());
-//            intent.putExtra("userName", userName.getText().toString());
-//            intent.putExtra("userPassword", userPassword.getText().toString());
-//            intent.putExtra("userStatus", userStatus.getText().toString());
-//        //   startActivityForResult(intent, 0);//
-//          //  finish();
-//        }
-//    }
 
 }

@@ -41,7 +41,7 @@
             android:shadowDy="6"
             android:text="name"
             android:textColor="#270202"
-            android:textSize="23dp"
+            android:textSize="15dp"
             android:typeface="serif" />
 
         <TextView

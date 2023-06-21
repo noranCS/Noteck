@@ -144,13 +144,13 @@ public class MathSubjectsActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(subject == "algebra")
+                if(subject.equals("algebra"))
                     addToListBYSubFromStorage(snapshot,algebraList,algebralistViewAdapter);
-                else if(subject == "geometry")
+                else if(subject.equals("geometry"))
                     addToListBYSubFromStorage(snapshot,geometryList,geoListViewAdapter);
-                else if(subject == "statistics")
+                else if(subject.equals("statistics"))
                     addToListBYSubFromStorage(snapshot,statisticsList,statisticsListViewAdapter);
-                else if(subject == "trigonometry")
+                else if(subject.equals("trigonometry"))
                     addToListBYSubFromStorage(snapshot,trigonometryList,trioListViewAdapter);
 
             }
